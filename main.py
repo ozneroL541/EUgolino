@@ -18,7 +18,7 @@ log_manager = setup()
 
 # Program
 eugolino = EUgolino(file, max_downloads=max, output=log_manager)
-checker = Checker(URL=URL, sleep_time=sleep_time, max_len=max, name=check_name)
+checker = Checker(check_URL=URL, send_check=True, sleep_time=sleep_time, max_len=max, name=check_name)
 # Start the threads
 eugolino.start()
 checker.start()
