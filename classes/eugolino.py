@@ -186,7 +186,7 @@ class EUgolino(threading.Thread):
         except:
             exceptions = sys.exc_info()
             self.output.print_out(exceptions)
-            self.output.print_err("Error: file\t" + self.file_in + "\tnot imported", file=sys.stderr)
+            self.output.print_err("Error: file\t" + self.file_in + "\tnot imported")
             errors = -1
         # If the current candidate is None, set it to the first candidate
         if self.candidates != [] and self.current is None:
@@ -244,7 +244,7 @@ class EUgolino(threading.Thread):
             self.output.print_out("Downloaded\t" + full_path)
             return True
         except:
-            self.output.print_err("Error\t" + full_path + "\tnot downloaded", file=sys.stderr)
+            self.output.print_err("Error\t" + full_path + "\tnot downloaded")
             try:
                 # Save the not downloaded file
                 with open(self.not_downloaded_files, "a") as f:
@@ -253,7 +253,7 @@ class EUgolino(threading.Thread):
                 # Update the input file
                 self.file_in = self.not_downloaded_files
             except:
-                self.output.print_err("Error\t" + self.not_downloaded_files + "\tnot updated", file=sys.stderr)
+                self.output.print_err("Error\t" + self.not_downloaded_files + "\tnot updated")
             self.output.print_out("FAIL\t\t" + full_path)
             return False
 

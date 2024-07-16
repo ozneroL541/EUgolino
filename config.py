@@ -19,12 +19,12 @@ outlog="output.log"
 """File where the output logs are saved"""
 errlog="error.log"
 """File where the error logs are saved"""
-duplicate:bool = True
+duplicate:bool = False
 
 # EUgolino Configuration
 file:str = "links.txt"
 """File from which the links are read"""
-max:int = 10
+max:int = 1000
 """Max number of links to download"""
 
 # Checker Configuration
