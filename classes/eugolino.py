@@ -11,6 +11,8 @@ import threading
 from bs4 import BeautifulSoup
 import requests
 
+from classes.log_manager import LogManager
+
 class DownloadCandidate:
     """
     A class representing a download candidate with a URL and a filename.
@@ -56,6 +58,8 @@ class DownloadCandidate:
         """
         # Initialize the candidate
         candite: DownloadCandidate = None
+        # Initialize the Log Manager
+        log = LogManager()
         try:
             # Remove the newline character
             line = line.strip()
@@ -67,9 +71,9 @@ class DownloadCandidate:
                 # Create the candidate
                 candite = DownloadCandidate(url, name)
             else:
-                print("Error line non parsed:\t" + line, file=sys.stderr)
+                log.print_err("Error line non parsed:\t" + line)
         except:
-            print("Error line:\t" + line, file=sys.stderr)
+            log.print_err("Error line:\t" + line)
         # Return the candidate
         return candite
     
@@ -107,22 +111,21 @@ class EUgolino(threading.Thread):
     """Current download candidate."""
     downloaded: int = 0
     """Number of downloaded files."""
-    not_downloaded_files = "not_downloaded.txt"
+    not_downloaded_files:str = "not_downloaded.txt"
     """File to store the list of files that were not downloaded."""
+    output:LogManager = LogManager()
 
-    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, destination: str = None, not_downloaded_file: str = None, current: DownloadCandidate = None) -> None:
+    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, destination: str = None, not_downloaded_file: str = None, output: LogManager = None) -> None:
         """
-        Constructor
-
-        Initializes a new instance of the EUgolino class.
+        Initializes an instance of the EUgolino class.
 
         Args:
-            file_in (str): Input file containing the list of URLs.
-            candidates (list[DownloadCandidate], optional): The list of download candidates. Defaults to None.
-            max_downloads (int, optional): The maximum number of downloads. Defaults to None.
-            destination (str, optional): The destination directory for downloaded files. Defaults to None.
-            not_downloaded_file (str, optional): The file to store the list of files that were not downloaded. Defaults to None.
-            current (DownloadCandidate, optional): The current download candidate. Defaults to None.
+            file_in (str): The input file.
+            candidates (list[DownloadCandidate], optional): List of download candidates. Defaults to None.
+            max_downloads (int, optional): Maximum number of downloads. Defaults to None.
+            destination (str, optional): Destination directory for downloaded files. Defaults to None.
+            not_downloaded_file (str, optional): File to store the list of files that were not downloaded. Defaults to None.
+            output (LogManager, optional): LogManager instance for logging. Defaults to None.
         """
         self.file_in = file_in
         if candidates is not None:
@@ -133,7 +136,9 @@ class EUgolino(threading.Thread):
             self.destination = destination
         if not_downloaded_file is not None:
             self.not_downloaded_files = not_downloaded_file
-        threading.Thread.__init__(self)
+        if output is not None:
+            self.output = output
+        threading.Thread.__init__(self, name="EUgolino")
 
     def __str__(self) -> str:
         out = "Input file: " + self.file_in + "\n" + "Number of urls: " + str(self.candidates.__len__) + "\n" + "Destination folder: " + self.destination + "\n" + "Max downloads: " + str(self.max_downloads) + "\n" + "Downloaded: " + str(self.downloaded)
@@ -164,7 +169,7 @@ class EUgolino(threading.Thread):
             # Open the file
             with open(self.file_in, 'r') as f:
                 # Read the file line by line
-                print("Importing file: " + self.file_in)
+                self.output.print_out("Importing file: " + self.file_in)
                 # Process each line
                 for line in f:
                     # Create a candidate
@@ -177,11 +182,11 @@ class EUgolino(threading.Thread):
                         errors += 1
             f.close()
             # ACK message
-            print("File imported")
+            self.output.print_out("File imported")
         except:
             exceptions = sys.exc_info()
-            print(exceptions)
-            print("Error: file\t" + self.file_in + "\tnot imported", file=sys.stderr)
+            self.output.print_out(exceptions)
+            self.output.print_err("Error: file\t" + self.file_in + "\tnot imported", file=sys.stderr)
             errors = -1
         # If the current candidate is None, set it to the first candidate
         if self.candidates != [] and self.current is None:
@@ -236,10 +241,10 @@ class EUgolino(threading.Thread):
             # Update the downloaded counter
             self.downloaded += 1
             # ACK message
-            print("Downloaded\t" + full_path)
+            self.output.print_out("Downloaded\t" + full_path)
             return True
         except:
-            print("Error\t" + full_path + "\tnot downloaded", file=sys.stderr)
+            self.output.print_err("Error\t" + full_path + "\tnot downloaded", file=sys.stderr)
             try:
                 # Save the not downloaded file
                 with open(self.not_downloaded_files, "a") as f:
@@ -248,8 +253,8 @@ class EUgolino(threading.Thread):
                 # Update the input file
                 self.file_in = self.not_downloaded_files
             except:
-                print("Error\t" + self.not_downloaded_files + "\tnot updated", file=sys.stderr)
-            print("FAIL\t\t" + full_path)
+                self.output.print_err("Error\t" + self.not_downloaded_files + "\tnot updated", file=sys.stderr)
+            self.output.print_out("FAIL\t\t" + full_path)
             return False
 
     def download_all(self, candidates: list[DownloadCandidate] = None, destination:str = None, max_downloads:int = None, not_downloaded_files:str = None) -> int:
@@ -297,7 +302,7 @@ class EUgolino(threading.Thread):
             self.current = self.candidates.pop(0)
 
             # Print the progress
-            print("[" + "{:{}}".format((i+1), fi) + '/' + str(num) + "]:", end="\t")
+            self.output.print_out("[" + "{:{}}".format((i+1), fi) + '/' + str(num) + "]:", end="\t")
 
             # Download the PDF
             if not self.downloadPDF():

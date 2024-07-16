@@ -14,7 +14,7 @@ class Checker(threading.Thread):
     """
     A class that represents a checker for monitoring a directory.
     """
-
+    
     name:str = "Checker"
     """Name of the Checker."""
     directory:str = 'pdf/'
@@ -33,6 +33,8 @@ class Checker(threading.Thread):
     """Maximum number of files in the directory."""
     halt:bool = False
     """Flag indicating whether to stop the checker."""
+    e:threading.Event = threading.Event()
+    """Event for waiting."""
 
     def __init__(self, name:str = "Checker", directory:str = "pdf/", sleep_time:int = 10, check_URL:str = None, send_check:bool = False, max_len:int = 0) -> None:
         """
@@ -57,7 +59,7 @@ class Checker(threading.Thread):
         else:
             self.send_check = send_check
         self.max_len = max_len
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, name=name)
     
     def __str__(self) -> str:
         """
@@ -73,6 +75,7 @@ class Checker(threading.Thread):
         Stop the checker.
         """
         self.halt = True
+        self.e.set()
 
     def update_current_len(self) -> None:
         """
@@ -210,7 +213,10 @@ class Checker(threading.Thread):
         if sleep_time is None:
             sleep_time = self.sleep_time
         # Sleep for the specified time
-        time.sleep(sleep_time)
+        try:
+            self.e.wait(sleep_time)
+        except:
+            pass
         # Check the length
         return self.check_len(URL=URL, send=send)
 
