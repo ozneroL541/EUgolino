@@ -1,5 +1,41 @@
+<a href="https://github.com/ozneroL541/EUgolino/master/LICENSE"><img src="https://img.shields.io/github/license/ozneroL541/EUgolino?color=2b9348" alt="License"/></a>
+
+
 # EUgolino
+
+## Index
+  - [Description](#description)
+  - [How to use](#how-to-use)
+      - [Download](#download)
+      - [Configure](#configure)
+      - [Execute](#execute)
+ - [Authors](#authors)
+ - [License](#license)
+
+## Description
 It was specifically designed to download papers from the European Union DataBase.
 As the Conte Ugolino in Dante's Inferno, it is a greedy downloader.
 As Ugolino della Gherardesca eats from the head of his enemy, 
 EUgolino feeds himself with the knowledge of scientific papers.
+
+## How to use
+### Download
+Download the repository from Github.
+
+    git clone https://github.com/ozneroL541/EUgolino.git
+
+### Configure
+Add the file with the PDF's links to the main ```eugolino``` directory or to the directory you prefer (remember to edit the configuration file specifying it).
+
+Edit the ```config.py``` file with your own configuration.
+
+### Execute
+To execute EUgolino run the ```script.sh```.
+
+    ./script.sh
+
+## Authors
+- Radice Lorenzo    @ozneroL541
+
+## License
+EUgolino is distributed under EUROPEAN UNION PUBLIC LICENCE v. 1.2.
