@@ -6,11 +6,9 @@
     description:
         This is the configuration's file of the EUgolino project.
 '''
+
 import os
-from contextlib import redirect_stdout, redirect_stderr
-
 from classes.log_manager import LogManager
-
 
 # Standard Configuration
 log_dir="logs/"

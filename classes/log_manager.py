@@ -5,8 +5,8 @@
     author: Lorenzo Radice
 '''
 
-from io import TextIOWrapper
 import sys
+from io import TextIOWrapper
 from typing import TextIO
 
 

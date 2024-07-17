@@ -6,10 +6,9 @@
 '''
 
 import os
-import sys
 import threading
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 from classes.log_manager import LogManager
 
@@ -184,8 +183,6 @@ class EUgolino(threading.Thread):
             # ACK message
             self.output.print_out("File imported")
         except:
-            exceptions = sys.exc_info()
-            self.output.print_out(exceptions)
             self.output.print_err("Error: file\t" + self.file_in + "\tnot imported")
             errors = -1
         # If the current candidate is None, set it to the first candidate
