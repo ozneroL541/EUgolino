@@ -1,6 +1,5 @@
 <a href="https://github.com/ozneroL541/EUgolino/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/ozneroL541/EUgolino?color=2b9348" alt="License"/></a>
-<img src="https://healthchecks.io/badge/99b60203-58f4-45c0-834b-8f05a0/6A_lupS_-2.svg" alt="healthchecks.io">
-
+<img src="https://healthchecks.io/b/3/74b3ef6e-1290-4e57-9be9-ae6138f53ab3.svg" alt="EUgolino">
 # EUgolino
 
 ## Index
