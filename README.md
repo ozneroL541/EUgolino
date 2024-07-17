@@ -37,4 +37,4 @@ To execute EUgolino run the ```script.sh```.
 - Radice Lorenzo    @ozneroL541
 
 ## License
-EUgolino is distributed under EUROPEAN UNION PUBLIC LICENCE v. 1.2.
+EUgolino is distributed under European Union Public Licence v. 1.2.

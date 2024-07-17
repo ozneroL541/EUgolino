@@ -3,6 +3,7 @@
     LogManager
     file name: log_manager.py
     author: Lorenzo Radice
+    license: European Union Public Licence v. 1.2.
 '''
 
 import sys

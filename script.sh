@@ -2,6 +2,7 @@
 #
 #   file name: script.sh
 #   author: Lorenzo Radice
+#   license: European Union Public Licence v. 1.2.
 #
 
 # Main file to execute

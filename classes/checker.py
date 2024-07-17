@@ -3,6 +3,7 @@
     EUgolino Checker
     file name: checker.py
     author: Lorenzo Radice
+    license: European Union Public Licence v. 1.2.
 '''
 
 import os
