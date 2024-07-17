@@ -1,4 +1,4 @@
-<a href="https://github.com/ozneroL541/EUgolino/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/ozneroL541/EUgolino?color=2b9348" alt="License"/></a>
+![GitHub License](https://img.shields.io/github/license/ozneroL541/EUgolino?color=light-green)
 <img src="https://healthchecks.io/b/3/74b3ef6e-1290-4e57-9be9-ae6138f53ab3.svg" alt="EUgolino">
 # EUgolino
 
