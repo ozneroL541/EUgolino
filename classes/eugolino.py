@@ -11,7 +11,7 @@ import threading
 import requests
 from bs4 import BeautifulSoup
 
-from log_manager import LogManager
+from classes.log_manager import LogManager
 
 class DownloadCandidate:
     """
