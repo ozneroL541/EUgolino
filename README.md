@@ -23,6 +23,11 @@ Download the repository from Github.
 
     git clone https://github.com/ozneroL541/EUgolino.git
 
+### Requirements
+Install the required packages by running the script ```requirements.sh```.
+
+    ./requirements.sh
+
 ### Configure
 Add the file with the PDF's links to the main ```eugolino``` directory or to the directory you prefer (remember to edit the configuration file specifying it).
 
