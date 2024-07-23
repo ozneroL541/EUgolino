@@ -85,7 +85,7 @@ class LogChecker(Checker):
         Check the log files for new errors.
 
         Returns:
-            bool: True if there are new errors, False otherwise        
+            bool: True if there are no errors, False otherwise        
         """
         self.new_error = False
         # Open error file
@@ -102,5 +102,8 @@ class LogChecker(Checker):
                 self.progresses = lines[-1].strip()
             # Close the file
             file.close()
+        # Send the check
+        if self.send_check:
+            self.send(success=(not self.new_error))
         # Return the result
-        return self.new_error
+        return not self.new_error
