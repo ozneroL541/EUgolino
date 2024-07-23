@@ -8,7 +8,6 @@
 
 from abc import ABC, abstractmethod
 import threading
-
 import requests
 
 
