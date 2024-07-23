@@ -10,7 +10,7 @@
 '''
 
 from classes.eugolino import EUgolino
-from classes.checker import Checker
+from classes.checkers.checker import Checker
 from config import *
 
 def main():
