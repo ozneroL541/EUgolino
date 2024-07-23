@@ -23,19 +23,20 @@ class FolderChecker(Checker):
     """Current number of files in the directory."""
     max_len:int = 0
 
-    def __init__(self, name:str = "Checker", directory:str = "pdf/", sleep_time:int = 10, url:str = None, send_check:bool = False, max_len:int = 0) -> None:
+    def __init__(self, directory:str, name:str = "Folder Checker", sleep_time:int = 10, url:str = None, send_check:bool = False, max_len:int = 0) -> None:
         """
         Costructor
         
         Initializes a new instace of the Folder Checker class.
 
         Args:
-            name (str, optional): Name of the Checker. Defaults to "Checker".
-            directory (str, optional): Directory to monitor. Defaults to "pdf/".
-            sleep_time (int, optional): Sleep time between checks. Defaults to 10.
+            directory (str): Directory to monitor.
+            name (str, optional): Name of the checker. Defaults to "Folder Checker".
+            sleep_time (int, optional): Time to wait before checking again. Defaults to 10.
             url (str, optional): URL to send the check. Defaults to None.
-            send_check (bool, optional): Flag indicating whether to send the check. Defaults to False.
-            max_len (int, optional): Maximum number of files in the directory. Defaults to 0.
+            send_check (bool, optional): Flag indicating if the check should be sent. Defaults to False.
+            max_len (int, optional): Maximum number of files in the directory. Defaults
+            
         """
         super().__init__(name=name, sleep_time=sleep_time, url=url, send_check=send_check)
         self.directory = directory
