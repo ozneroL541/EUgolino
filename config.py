@@ -1,15 +1,12 @@
 #!/bin/python3
 '''
-    EUgolino Configuration
+    EUgolino Configuration File
     file name: config.py
     author: Lorenzo Radice
     license: European Union Public Licence v. 1.2.
     description:
         This is the configuration's file of the EUgolino project.
 '''
-
-import os
-from classes.log_manager import LogManager
 
 # Standard Configuration
 log_dir="logs/"
@@ -19,30 +16,42 @@ outlog="output.log"
 errlog="error.log"
 """File where the error logs are saved"""
 duplicate:bool = False
+"""If True, the logs are duplicated on the console"""
+# Make paths
+outpath:str = log_dir+outlog
+"""Path to the output log"""
+errpath:str = log_dir+errlog
+"""Path to the error log"""
 
 # EUgolino Configuration
+eugolino_name:str = "EUgolino"
+"""Name of the EUgolino"""
 file:str = "links.txt"
 """File from which the links are read"""
-max:int = 1000
+max:int = 10
 """Max number of links to download"""
+directory:str = "pdf/"
 
 # Checker Configuration
-check_name:str = "EUgolino"
+checker_name:str = "EUgolino"
 """Name of the checker"""
-URL:str = "https://localhost"
-"""URL of the checker"""
 MINUTE:int = 60
 """Seconds in a minute"""
 sleep_time:int = 5*MINUTE
 """Seconds to wait between each check"""
+send_check:bool = True
+"""If True, the checker sends a check to the URL"""
+delay:int = sleep_time // 2
+"""Seconds to wait before start the next thread"""
 
-# Set up
-def setup() -> LogManager:
-    '''
-        This function sets up the environment for the EUgolino project.
-    '''
-    # Make the log directory if it doesn't exist
-    os.makedirs(log_dir, exist_ok=True)
-    # Set up a Logging Manager
-    log_manager = LogManager(out_file=log_dir+outlog, err_file=log_dir+errlog, duplicate=duplicate)
-    return log_manager
+# Folder Checker Configuration
+fname:str = checker_name+" Folder Checker"
+"""Name of the Folder Checker"""
+URL_FOL:str = "http://localhost"
+"""URL of the folder checker"""
+
+# Log Checker Configuration
+lname:str = checker_name+" Log Checker"
+"""Name of the Log Checker"""
+URL_LOG:str = "http://localhost"
+"""URL of the log checker"""

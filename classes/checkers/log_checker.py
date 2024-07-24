@@ -69,7 +69,7 @@ class LogChecker(Checker):
             return self.progresses
         # Check if log_out is None
         if self.log_out is None:
-            return ""
+            return "OK"
         # Get the last line of the output log
         with open(self.log_out, 'r') as file:
             lines = file.readlines()
@@ -96,14 +96,11 @@ class LogChecker(Checker):
             if len(lines) > self.last_err_line:
                 # Set the flag 
                 self.new_error = True
+                # Get the new errors
+                self.progresses = "".join(lines[self.last_err_line:])
                 # Update the last line read
                 self.last_err_line = len(lines)
-                # Get the last line
-                self.progresses = lines[-1].strip()
             # Close the file
             file.close()
-        # Send the check
-        if self.send_check:
-            self.send(success=(not self.new_error))
         # Return the result
         return not self.new_error
