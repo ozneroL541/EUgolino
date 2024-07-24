@@ -1,5 +1,7 @@
 [![GitHub License](https://img.shields.io/badge/License-EUPL_1.2-blue)](https://eupl.eu/1.2/en)
-![EUgolino](https://healthchecks.io/b/2/74b3ef6e-1290-4e57-9be9-ae6138f53ab3.svg)
+![Folders EUgolino](https://healthchecks.io/b/2/74b3ef6e-1290-4e57-9be9-ae6138f53ab3.svg)
+![Logs Eugolino](https://healthchecks.io/b/2/2275eedf-32bd-4644-8db9-b81fb218ca9f.svg)
+
 # EUgolino
 
 ## Index
