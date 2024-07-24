@@ -9,26 +9,35 @@
         It downloads the pdfs and checks the status of itself.
 '''
 
+import time
 from classes.eugolino import EUgolino
-from classes.checkers.checker import Checker
-from config import *
+from classes.checkers.folder_checker import FolderChecker
+from setup import *
 
 def main():
     '''
         Main function of the EUgolino project.
     '''
-    # Set up
-    log_manager = setup()
     # Program
-    eugolino = EUgolino(file, max_downloads=max, output=log_manager)
-    checker = Checker(check_URL=URL, send_check=True, sleep_time=sleep_time, max_len=max, name=check_name)
-    # Start the threads
+    eugolino = eugolinoset(output=logset())
+    """EUgolino instance"""
+    fcheck, lcheck = checkerset()
+    """Checkers"""
+    # Start EUgolino
     eugolino.start()
-    checker.start()
-    # Wait for the threads to finish
+    # Start the checkers
+    fcheck.start()
+    # Delay the next checker
+    time.sleep(delay)
+    lcheck.start()
+    # Wait for the EUgolino thread to finish
     eugolino.join()
-    checker.stop()
-    checker.join()
+    # Stop the checkers
+    lcheck.stop()
+    fcheck.stop()
+    # End the program
+    lcheck.join()
+    fcheck.join()
 
 if __name__ == "__main__":
     main()

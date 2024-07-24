@@ -115,7 +115,7 @@ class EUgolino(threading.Thread):
     """File to store the list of files that were not downloaded."""
     output:LogManager = LogManager()
 
-    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, destination: str = None, not_downloaded_file: str = None, output: LogManager = None) -> None:
+    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, destination: str = None, not_downloaded_file: str = None, output: LogManager = None, name: str = "EUgolino") -> None:
         """
         Initializes an instance of the EUgolino class.
 
@@ -138,7 +138,7 @@ class EUgolino(threading.Thread):
             self.not_downloaded_files = not_downloaded_file
         if output is not None:
             self.output = output
-        threading.Thread.__init__(self, name="EUgolino")
+        threading.Thread.__init__(self, name=name)
 
     def __str__(self) -> str:
         out = "Input file: " + self.file_in + "\n" + "Number of urls: " + str(self.candidates.__len__) + "\n" + "Destination folder: " + self.destination + "\n" + "Max downloads: " + str(self.max_downloads) + "\n" + "Downloaded: " + str(self.downloaded)

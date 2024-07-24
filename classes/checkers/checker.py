@@ -16,8 +16,6 @@ class Checker(ABC, threading.Thread):
     Abstract class for checkers
     """
 
-    name:str = "Checker"
-    """Name of the checker"""
     sleep_time:int = 10
     """Time to wait before checking again"""
     url:str = None
@@ -41,7 +39,6 @@ class Checker(ABC, threading.Thread):
             url (str, optional): URL to send the check. Defaults to None.
             send_check (bool, optional): Flag indicating if the check should be sent. Defaults to False
         """
-        self.name = name
         self.sleep_time = sleep_time
         self.url = url
         if url is None:    
@@ -65,6 +62,16 @@ class Checker(ABC, threading.Thread):
         """
         self.halt = True
         self.e.set()
+    
+    @abstractmethod
+    def get_progresses(self) -> str:
+        """
+        Get the progresses of the service
+        
+        Returns:
+            dict: Dictionary containing the progresses of the service
+        """
+        return ""
     
     def send(self, success:bool = True, data:str = "", url:str="") -> bool:
         """
@@ -124,18 +131,22 @@ class Checker(ABC, threading.Thread):
         Returns:
             bool: True if the service is up, False otherwise
         """
-        pass
-
-    @abstractmethod
-    def get_progresses(self) -> str:
+        return True
+    
+    def check_and_send(self, send:bool = None) -> bool:
         """
-        Get the progresses of the service
+        Send the check.
         
         Returns:
-            dict: Dictionary containing the progresses of the service
+            bool: True if the check was sent, False otherwise
         """
-        return ""
-    
+        if send is None:
+            send = self.send_check
+        # Check
+        b = self.check()
+        # Send the check
+        return self.send(b) if send else b
+
     def timed_check(self, sleep_time:int = None, url:str = None, send:bool = None) -> bool:
         """
         Make a check after waiting a sleep time.
@@ -163,8 +174,8 @@ class Checker(ABC, threading.Thread):
             self.e.wait(sleep_time)
         except:
             pass
-        # Check the length
-        return self.check()
+        # Check and send
+        return self.check_and_send(send=send)
 
     
     def continuous_check(self, sleep_time:int = None, url:str = None, send:bool = None) -> None:

@@ -22,6 +22,7 @@ class FolderChecker(Checker):
     current_len:int = 0
     """Current number of files in the directory."""
     max_len:int = 0
+    """Maximum number of files in the directory."""
 
     def __init__(self, directory:str, name:str = "Folder Checker", sleep_time:int = 10, url:str = None, send_check:bool = False, max_len:int = 0) -> None:
         """
@@ -108,8 +109,6 @@ class FolderChecker(Checker):
             self.previous_len = self.current_len
             # Success
             success = True
-        # Send the check
-        self.send(success)
         # Return the result of the check
         return success
 
