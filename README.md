@@ -14,7 +14,7 @@
  - [License](#license)
 
 ## Description
-It was specifically designed to download papers from the European Union DataBase.
+It is specifically designed to download PDFs from the European Union DataBase.
 As the Conte Ugolino in Dante's Inferno, it is a greedy downloader.
 As Ugolino della Gherardesca eats from the head of his enemy, 
 EUgolino feeds himself with the knowledge of scientific papers.
@@ -29,6 +29,10 @@ Download the repository from Github.
 Install the required packages by running the script ```requirements.sh```.
 
     ./requirements.sh
+
+Enter the folder.
+
+    cd EUgolino
 
 ### Configure
 Add the file with the PDF's links to the main ```eugolino``` directory or to the directory you prefer (remember to edit the configuration file specifying it).
