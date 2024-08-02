@@ -9,6 +9,9 @@
 '''
 
 # Standard Configuration
+from classes.eugolino import DownloadCandidate
+
+
 log_dir="logs/"
 """Directory where the logs are saved"""
 outlog="output.log"
@@ -28,9 +31,12 @@ eugolino_name:str = "EUgolino"
 """Name of the EUgolino"""
 file:str = "links.txt"
 """File from which the links are read"""
-max:int = 10
+max:int = 0
 """Max number of links to download"""
 directory:str = "pdf/"
+"""Directory where the files are saved"""
+starting_point:int = 1000
+"""Starting link"""
 
 # Checker Configuration
 checker_name:str = "EUgolino"
@@ -47,11 +53,11 @@ delay:int = sleep_time // 2
 # Folder Checker Configuration
 fname:str = checker_name+" Folder Checker"
 """Name of the Folder Checker"""
-URL_FOL:str = "http://localhost"
+URL_FOL:str = "https://hc-ping.com/1"
 """URL of the folder checker"""
 
 # Log Checker Configuration
 lname:str = checker_name+" Log Checker"
 """Name of the Log Checker"""
-URL_LOG:str = "http://localhost"
+URL_LOG:str = "https://hc-ping.com/2"
 """URL of the log checker"""

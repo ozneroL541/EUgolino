@@ -7,6 +7,7 @@
 '''
 
 import os
+import sys
 from typing import Tuple
 from classes.eugolino import EUgolino
 from config import *
@@ -49,4 +50,6 @@ def eugolinoset(output:LogManager) -> EUgolino:
         It initializes the EUgolino class and returns it.
     '''
     # Set up the EUgolino
-    return EUgolino(file, max_downloads=max, output=output, name=eugolino_name, destination=directory)
+    e = EUgolino(file, max_downloads=max, starting_point=starting_point, output=output, name=eugolino_name, destination=directory)
+    # Return the EUgolino
+    return e

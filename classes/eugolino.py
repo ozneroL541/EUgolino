@@ -105,6 +105,8 @@ class EUgolino(threading.Thread):
     """List of download candidates."""
     max_downloads: int = -1
     """Maximum number of downloads."""
+    starting_point: int = 0
+    """Starting point for the download."""
     destination: str = "pdf/"
     """Destination folder for downloaded files."""
     current: DownloadCandidate = None
@@ -114,8 +116,9 @@ class EUgolino(threading.Thread):
     not_downloaded_files:str = "not_downloaded.txt"
     """File to store the list of files that were not downloaded."""
     output:LogManager = LogManager()
+    """Log Manager for logging."""
 
-    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, destination: str = None, not_downloaded_file: str = None, output: LogManager = None, name: str = "EUgolino") -> None:
+    def __init__(self, file_in: str, candidates: list[DownloadCandidate] = None, max_downloads: int = None, starting_point: int = 0, destination: str = None, not_downloaded_file: str = None, output: LogManager = None, name: str = "EUgolino") -> None:
         """
         Initializes an instance of the EUgolino class.
 
@@ -123,6 +126,7 @@ class EUgolino(threading.Thread):
             file_in (str): The input file.
             candidates (list[DownloadCandidate], optional): List of download candidates. Defaults to None.
             max_downloads (int, optional): Maximum number of downloads. Defaults to None.
+            starting_point (int, optional): Starting point for the download. Defaults to 0.
             destination (str, optional): Destination directory for downloaded files. Defaults to None.
             not_downloaded_file (str, optional): File to store the list of files that were not downloaded. Defaults to None.
             output (LogManager, optional): LogManager instance for logging. Defaults to None.
@@ -138,6 +142,8 @@ class EUgolino(threading.Thread):
             self.not_downloaded_files = not_downloaded_file
         if output is not None:
             self.output = output
+        if self.max_downloads < 0 or starting_point < self.max_downloads:
+            self.starting_point = starting_point
         threading.Thread.__init__(self, name=name)
 
     def __str__(self) -> str:
@@ -255,7 +261,7 @@ class EUgolino(threading.Thread):
             self.output.print_out("FAIL\t\t" + full_path)
             return False
 
-    def download_all(self, candidates: list[DownloadCandidate] = None, destination:str = None, max_downloads:int = None, not_downloaded_files:str = None) -> int:
+    def download_all(self, candidates: list[DownloadCandidate] = None, destination:str = None, max_downloads:int = None, starting_point:int = None, not_downloaded_files:str = None) -> int:
         """
         Downloads all the PDF files from the given list of download candidates.
 
@@ -263,6 +269,7 @@ class EUgolino(threading.Thread):
             candidates (list[DownloadCandidate], optional): List of DownloadCandidate objects representing the PDF files to download. If not provided, the previously set candidates will be used. Defaults to None.
             destination (str, optional): The destination folder where the downloaded PDF files will be saved. If not provided, the previously set destination will be used. Defaults to None.
             max_downloads (int, optional): The maximum number of PDF files to download. If not provided, all the candidates will be downloaded. Defaults to None.
+            starting_point (int, optional): The starting point for the download. If not provided, the previously set starting point will be used. Defaults to None.
             not_downloaded_files (str, optional): The file path to save the list of files that were not downloaded. If not provided, the previously set file path will be used. Defaults to None.
 
         Returns:
@@ -276,6 +283,9 @@ class EUgolino(threading.Thread):
             self.max_downloads = max_downloads
         if not_downloaded_files is not None:
             self.not_downloaded_files = not_downloaded_files
+        if starting_point is not None:
+            if self.max_downloads < 0 or starting_point < self.max_downloads:
+                self.starting_point = starting_point
 
         # Initialize the errors counter
         errors = 0
@@ -293,9 +303,10 @@ class EUgolino(threading.Thread):
 
         # Get the number of digits of the length
         fi = self.count_digits(num)
-
+        # Discard the first candidates
+        self.candidates = self.candidates[self.starting_point:]
         # Download the PDFs
-        for i in range(num):
+        for i in range(self.starting_point, num):
             # Get the filename
             self.current = self.candidates.pop(0)
 
@@ -336,8 +347,10 @@ class EUgolino(threading.Thread):
             self.not_downloaded_files = not_downloaded_files
         # Initialize the lists
         errors += self.import_file()
-        # Download the PDFs
-        errors += self.download_all()
+        # Check the errors
+        if errors == 0:
+            # Download the PDFs
+            errors += self.download_all()
         # Return the number of errors
         return errors
     
@@ -360,4 +373,3 @@ class EUgolino(threading.Thread):
         """
         ns = str(n)
         return len(ns)
-
