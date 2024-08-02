@@ -9,9 +9,6 @@
 '''
 
 # Standard Configuration
-from classes.eugolino import DownloadCandidate
-
-
 log_dir="logs/"
 """Directory where the logs are saved"""
 outlog="output.log"
