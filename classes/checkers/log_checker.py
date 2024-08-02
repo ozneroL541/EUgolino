@@ -87,7 +87,10 @@ class LogChecker(Checker):
         Returns:
             bool: True if there are no errors, False otherwise        
         """
+        # Initialize the variables
         self.new_error = False
+        self.progresses = ""
+        success = True
         # Open error file
         with open(self.log_err, 'r') as file:
             # Read the lines
@@ -96,11 +99,16 @@ class LogChecker(Checker):
             if len(lines) > self.last_err_line:
                 # Set the flag 
                 self.new_error = True
-                # Get the new errors
-                self.progresses = "".join(lines[self.last_err_line:])
+                # Read the errors
+                for line in lines[self.last_err_line:]:
+                    # Update the progresses
+                    self.progresses += line + "\n"
+                    # If the word is not in line the check is failed
+                    if "not downloaded" not in line:
+                        success = False
                 # Update the last line read
                 self.last_err_line = len(lines)
             # Close the file
             file.close()
         # Return the result
-        return not self.new_error
+        return success
