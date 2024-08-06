@@ -30,12 +30,27 @@ def main():
     lcheck.start()
     # Wait for the EUgolino thread to finish
     eugolino.join()
-    # Stop the checkers
-    lcheck.stop()
+    # Stop the folder checker
     fcheck.stop()
-    # End the program
-    lcheck.join()
     fcheck.join()
+    # Start Guelfo
+    guelfo = guelfoset(output=logset())
+    """GUElfo instance"""
+    fcheck = checker_guelfoset()
+    """Folder Checker"""
+    # Start GUElfo
+    guelfo.start()
+    # Start the checker
+    fcheck.start()
+    # Wait for the GUElfo thread to finish
+    guelfo.join()
+    # Stop the checkers
+    fcheck.stop()
+    lcheck.stop()
+    # End the program
+    fcheck.join()
+    lcheck.join()
+    
 
 if __name__ == "__main__":
     main()

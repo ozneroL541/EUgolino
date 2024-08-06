@@ -46,8 +46,39 @@ def eugolinoset(output:LogManager) -> EUgolino:
     '''
         This function sets up the EUgolino project.
         It initializes the EUgolino class and returns it.
+
+        Returns:
+            EUgolino: The EUgolino
     '''
     # Set up the EUgolino
-    e = EUgolino(file, max_downloads=max, starting_point=starting_point, output=output, name=eugolino_name, destination=directory)
+    e = EUgolino(file_in=file, max_downloads=max, starting_point=starting_point, output=output, name=eugolino_name, destination=directory)
     # Return the EUgolino
     return e
+
+def guelfoset(output:LogManager) -> EUgolino:
+    '''
+        This function sets up the GUElfo project.
+        It initializes the EUgolino class and returns
+        it.
+
+        Returns:
+            EUgolino: The GUElfo
+    '''
+    # Set up the GUElfo
+    g = EUgolino(file_in=file_guelfo, max_downloads=max_guelfo, starting_point=starting_point_guelfo, output=output, name=guelfo_name, destination=directory_guelfo)
+    # Return the GUElfo
+    return g
+
+def checker_guelfoset() -> FolderChecker:
+    '''
+        This function sets up the checker for the GUElfo project.
+        It initializes the folder checker and returns it.
+
+        Returns:
+            FolderChecker: The folder checker
+    '''
+    # Set up the Folder Checker
+    folder_checker = FolderChecker(directory=directory_guelfo, max_len=max_guelfo, name=fname, url=URL_FOL, sleep_time=sleep_time, send_check=send_check)
+    # Return the checkers
+    return folder_checker
+
