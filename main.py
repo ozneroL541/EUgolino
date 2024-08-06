@@ -10,8 +10,6 @@
 '''
 
 import time
-from classes.eugolino import EUgolino
-from classes.checkers.folder_checker import FolderChecker
 from setup import *
 
 def main():

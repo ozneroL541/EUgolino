@@ -7,9 +7,8 @@
 '''
 
 import os
-import sys
 from typing import Tuple
-from classes.eugolino import EUgolino
+from classes.cocito.eugolino import EUgolino
 from config import *
 
 from classes.log_manager import LogManager
