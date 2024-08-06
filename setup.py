@@ -12,7 +12,6 @@ from classes.cocito.eugolino import EUgolino
 from config import *
 
 from classes.log_manager import LogManager
-from classes.checkers.checker import Checker
 from classes.checkers.log_checker import LogChecker
 from classes.checkers.folder_checker import FolderChecker
 
