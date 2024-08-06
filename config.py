@@ -34,9 +34,9 @@ directory:str = "pdf/"
 """Directory where the files are saved"""
 starting_point:int = 0
 """Starting link"""
-# Guelfo Configuration
-guelfo_name:str = "Guelfo"
-"""Name of the Guelfo"""
+# GUElfo Configuration
+guelfo_name:str = "GUEelfo"
+"""Name of the GUElfo"""
 file_guelfo:str = "links_little.txt"
 """File from which the links are read"""
 max_guelfo:int = max
