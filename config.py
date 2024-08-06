@@ -28,7 +28,7 @@ eugolino_name:str = "EUgolino"
 """Name of the EUgolino"""
 file:str = "links.txt"
 """File from which the links are read"""
-max:int = 2000
+max:int = 100
 """Max number of links to download"""
 directory:str = "pdf/"
 """Directory where the files are saved"""
@@ -47,7 +47,7 @@ starting_point_guelfo:int = 0
 """Starting link"""
 
 # Checker Configuration
-checker_name:str = eugolino_name
+checker_name:str = "Checker"
 """Name of the checker"""
 MINUTE:int = 60
 """Seconds in a minute"""
@@ -60,10 +60,10 @@ delay:int = sleep_time // 2
 # Folder Checker Configuration
 fname:str = checker_name+" Folder Checker"
 """Name of the Folder Checker"""
-URL_FOL:str = "https://hc-ping.com/ff10f799-7253-4a38-945a-334a83b7bab7"
+URL_FOL:str = "https://localhost"
 """URL of the folder checker"""
 # Log Checker Configuration
 lname:str = checker_name+" Log Checker"
 """Name of the Log Checker"""
-URL_LOG:str = "https://hc-ping.com/529182ff-a75e-4922-aa8a-f4c1a4878352"
+URL_LOG:str = "https://localhost"
 """URL of the log checker"""

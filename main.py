@@ -50,7 +50,6 @@ def main():
     # End the program
     fcheck.join()
     lcheck.join()
-    
 
 if __name__ == "__main__":
     main()

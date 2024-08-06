@@ -17,6 +17,7 @@ class GUElfo(EUgolino):
     """Destination folder for downloaded files."""
     not_downloaded_files:str = "not_downloaded_guelfo.txt"
     """File to store the list of files that were not downloaded."""
+
     def downloadPDF(self, candidate: DownloadCandidate = None, destination:str = None, not_downloaded_file = None) -> bool:
         """
         Downloads a PDF file from a given URL and saves it to the specified destination.

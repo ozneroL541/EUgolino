@@ -88,7 +88,7 @@ class DownloadCandidate:
             return self.name + "," + self.url
 
     def __str__(self) -> str:
-        return "Name" + self.name + "Filename: " + self.filename + "\n" + "URL: " + self.url
+        return "Name: " + self.name + "\nFilename: " + self.filename + "\nURL: " + self.url
 
 class EUgolino(threading.Thread):
     """
@@ -147,9 +147,9 @@ class EUgolino(threading.Thread):
         threading.Thread.__init__(self, name=name)
 
     def __str__(self) -> str:
-        out = "Input file: " + self.file_in + "\n" + "Number of urls: " + str(self.candidates.__len__) + "\n" + "Destination folder: " + self.destination + "\n" + "Max downloads: " + str(self.max_downloads) + "\n" + "Downloaded: " + str(self.downloaded)
+        out = "Name: " + self.name + "\nInput file: " + self.file_in + "\n" + "Number of urls: " + str(len(self.candidates)) + "\n" + "Destination folder: " + self.destination + "\n" + "Max downloads: " + str(self.max_downloads) + "\n" + "Downloaded: " + str(self.downloaded)
         if self.current is not None:
-            out += "\n" + "Current\n" + self.current
+            out += "\n" + "Current\n" + str(self.current)
         return out
     
     def import_file(self, file:str = None, candites: list[DownloadCandidate] = None) -> int:

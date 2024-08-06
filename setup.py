@@ -9,6 +9,7 @@
 import os
 from typing import Tuple
 from classes.cocito.eugolino import EUgolino
+from classes.cocito.guelfo import GUElfo
 from config import *
 
 from classes.log_manager import LogManager
@@ -55,7 +56,7 @@ def eugolinoset(output:LogManager) -> EUgolino:
     # Return the EUgolino
     return e
 
-def guelfoset(output:LogManager) -> EUgolino:
+def guelfoset(output:LogManager) -> GUElfo:
     '''
         This function sets up the GUElfo project.
         It initializes the EUgolino class and returns
@@ -65,7 +66,7 @@ def guelfoset(output:LogManager) -> EUgolino:
             EUgolino: The GUElfo
     '''
     # Set up the GUElfo
-    g = EUgolino(file_in=file_guelfo, max_downloads=max_guelfo, starting_point=starting_point_guelfo, output=output, name=guelfo_name, destination=directory_guelfo)
+    g:GUElfo = GUElfo(file_in=file_guelfo, max_downloads=max_guelfo, starting_point=starting_point_guelfo, output=output, name=guelfo_name, destination=directory_guelfo)
     # Return the GUElfo
     return g
 
