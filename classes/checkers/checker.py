@@ -169,6 +169,8 @@ class Checker(ABC, threading.Thread):
             send = True
         if sleep_time is None:
             sleep_time = self.sleep_time
+        # Set the event
+        self.e.clear()
         # Sleep for the specified time
         try:
             self.e.wait(sleep_time)
@@ -203,6 +205,8 @@ class Checker(ABC, threading.Thread):
         # Send the starting check
         if send:
             self.send_start()
+        # Initialize the halt flag
+        self.halt = False
         # Forever
         while not self.halt:
             # Check
