@@ -1,10 +1,10 @@
 #!/bin/python3
 '''
-    EUgolino Configuration File
-    file name: config.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
-    description:
+    EUgolino Configuration File  
+    file name: config.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
+    description:  
         This is the configuration's file of the EUgolino project.
 '''
 

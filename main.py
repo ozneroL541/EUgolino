@@ -1,11 +1,11 @@
 #!/bin/python3
 '''
-    EUgolino Main
-    file name: main.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
-    description:
-        This is the main file of the EUgolino project.
+    EUgolino Main  
+    file name: main.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
+    description:   
+        This is the main file of the EUgolino project. 
         It downloads the pdfs and checks the status of itself.
 '''
 

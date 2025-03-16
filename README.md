@@ -10,6 +10,7 @@
       - [Download](#download)
       - [Configure](#configure)
       - [Execute](#execute)
+ - [Documentation](#documentation)
  - [Authors](#authors)
  - [License](#license)
 
@@ -26,16 +27,17 @@ Download the repository from Github.
     git clone https://github.com/ozneroL541/EUgolino.git
 
 ### Requirements
-Install the required packages by running the script ```requirements.sh```.
+Install the required packages by running the script `requirements.sh`.
+> **Note:** The script works with Debian-based Linux Distribution, if you have another Operative System, please install them manually by looking inside `EUgolino/requirements.sh` file.
 
-    ./requirements.sh
+    ./EUgolino/requirements.sh
 
 Enter the folder.
 
     cd EUgolino
 
 ### Configure
-Add the file with the PDF's links to the main ```eugolino``` directory or to the directory you prefer (remember to edit the configuration file specifying it).
+Add the file with the PDF's links to the main ```EUgolino``` directory or to the directory you prefer (remember to edit the configuration file specifying it).
 
 Edit the ```config.py``` file with your own configuration.
 
@@ -43,6 +45,9 @@ Edit the ```config.py``` file with your own configuration.
 To execute EUgolino run the ```script.sh```.
 
     ./script.sh
+
+## Documentation
+Documentation is avaiable in `doc` directory.
 
 ## Authors
 - Radice Lorenzo    @ozneroL541

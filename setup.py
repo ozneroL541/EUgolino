@@ -1,9 +1,9 @@
 #!/bin/python3
 '''
-    EUgolino Set-Up File
-    file name: config.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
+    EUgolino Set-Up File  
+    file name: config.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
 '''
 
 import os

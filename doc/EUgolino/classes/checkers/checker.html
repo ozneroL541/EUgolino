@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>EUgolino.classes.checkers.checker API documentation</title>
+<meta name="description" content="EUgolino Abstract Checker
+file name: checker.py
+author: Lorenzo Radice
+license: European Union Public Licence v. 1.2.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>EUgolino.classes.checkers.checker</code></h1>
+</header>
+<section id="section-intro">
+<p>EUgolino Abstract Checker<br>
+file name: checker.py<br>
+author: Lorenzo Radice<br>
+license: European Union Public Licence v. 1.2.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="EUgolino.classes.checkers.checker.Checker"><code class="flex name class">
+<span>class <span class="ident">Checker</span></span>
+<span>(</span><span>name: str = 'Checker',<br>sleep_time: int = 10,<br>url: str = None,<br>send_check: bool = False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Checker(ABC, threading.Thread):
+    &#34;&#34;&#34;
+    Abstract class for checkers
+    &#34;&#34;&#34;
+
+    sleep_time:int = 10
+    &#34;&#34;&#34;Minutes to wait before checking again&#34;&#34;&#34;
+    url:str = None
+    &#34;&#34;&#34;URL to send the check&#34;&#34;&#34;
+    send_check:bool = False
+    &#34;&#34;&#34;Flag indicating if the check should be sent&#34;&#34;&#34;
+    halt:bool = False
+    &#34;&#34;&#34;Flag indicating if the checker should stop&#34;&#34;&#34;
+    e:threading.Event = threading.Event()
+    &#34;&#34;&#34;Event for waiting&#34;&#34;&#34;
+
+    def __init__(self, name:str = &#34;Checker&#34;, sleep_time:int = 10, url:str = None, send_check:bool = False):
+        &#34;&#34;&#34;
+        Constructor
+
+        Initializes a new instance of the Checker class.
+
+        Args:
+            name (str, optional): Name of the checker. Defaults to &#34;Checker&#34;.
+            sleep_time (int, optional): Minutes to wait before checking again. Defaults to 10.
+            url (str, optional): URL to send the check. Defaults to None.
+            send_check (bool, optional): Flag indicating if the check should be sent. Defaults to False
+        &#34;&#34;&#34;
+        self.sleep_time = sleep_time
+        self.url = url
+        if url is None:    
+            self.send_check = False
+        else:
+            self.send_check = send_check
+        threading.Thread.__init__(self, name=name)
+    
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;
+        String representation of the Checker.
+
+        Returns:
+            str: String representation of the Checker.
+        &#34;&#34;&#34;
+        return &#34;Name:\t&#34; + self.name + &#34;\nSleep time:\t&#34; + str(self.sleep_time) + &#34;\nCheck URL:\t&#34; + str(self.url) + &#34;\nSend check:\t&#34; + str(self.send_check)
+    
+    def stop(self) -&gt; None:
+        &#34;&#34;&#34;
+        Stop the checker
+        &#34;&#34;&#34;
+        self.halt = True
+        self.e.set()
+    
+    @abstractmethod
+    def get_progresses(self) -&gt; str:
+        &#34;&#34;&#34;
+        Get the progresses of the service
+        
+        Returns:
+            dict: Dictionary containing the progresses of the service
+        &#34;&#34;&#34;
+        return &#34;&#34;
+    
+    def send(self, success:bool = True, data:str = &#34;&#34;, url:str=&#34;&#34;) -&gt; bool:
+        &#34;&#34;&#34;
+        Send the check to the specified URL.
+
+        Args:
+            success (bool, optional): Flag indicating whether the check was successful. Defaults to None.
+            data (str, optional): Data to send with the check. Defaults to &#34;&#34;.
+            url (str, optional): URL to send the check to. Defaults to &#34;&#34;.
+
+        Returns:
+            bool: True if the check was sent, False otherwise.
+        &#34;&#34;&#34;
+        if self.url is None and url == &#34;&#34;:
+            return
+        if url == &#34;&#34;:
+            url = self.url
+        # Make url
+        url = url if success else url + &#34;/fail&#34;
+        # If data is not set
+        if data == &#34;&#34;:
+            # Make data
+            data = &#34;Name:\t&#34; + self.name + &#34;\n\n&#34; + self.get_progresses()
+        # Send the check with current length
+        r = requests.post(url=url, data=data)
+        # Return the result
+        return r.ok
+    
+    def send_start(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Send the starting check.
+        
+        Returns:
+            bool: True if the check was sent, False otherwise
+        &#34;&#34;&#34;
+        return requests.post(url=self.url+&#34;/start&#34;, data=str(&#34;Name:\t&#34; + self.name)).ok
+
+    def send_done(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Send the ending check.
+        
+        Returns:
+            bool: True if the check was sent, False otherwise
+        &#34;&#34;&#34;
+        # Make data
+        data = str(&#34;Name:\t&#34; + self.name + &#34;\n\nDONE\n\n&#34; + self.get_progresses())
+        # Send the message
+        r = requests.post(url=self.url, data=data, timeout=10)
+        # Return the result
+        return r.ok
+
+    @abstractmethod
+    def check(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Check the service
+        
+        Returns:
+            bool: True if the service is up, False otherwise
+        &#34;&#34;&#34;
+        return True
+    
+    def check_and_send(self, send:bool = None) -&gt; bool:
+        &#34;&#34;&#34;
+        Send the check.
+        
+        Returns:
+            bool: True if the check was sent, False otherwise
+        &#34;&#34;&#34;
+        if send is None:
+            send = self.send_check
+        # Check
+        b = self.check()
+        # Send the check
+        return self.send(b) if send else b
+
+    def timed_check(self, sleep_time:int = None, url:str = None, send:bool = None) -&gt; bool:
+        &#34;&#34;&#34;
+        Make a check after waiting a sleep time.
+
+        Args:
+            sleep_time (int, optional): The time to sleep before checking. If not provided, the default sleep time from the class instance will be used.
+            url (str, optional): The URL to check. If not provided, the default URL from the class instance will be used.
+            send (bool, optional): Indicates whether to send the check. If not provided, the default send value from the class instance will be used.
+
+        Returns:
+            bool: Result of the check.
+        &#34;&#34;&#34;
+        if url is None:
+            url = self.url
+            if url is None:
+                send = False
+            elif send is None:
+                send = self.send_check
+        else:
+            send = True
+        if sleep_time is None:
+            sleep_time = self.sleep_time
+        # Set the event
+        self.e.clear()
+        # Sleep for the specified time
+        try:
+            self.e.wait(sleep_time)
+        except:
+            pass
+        # Check and send
+        return self.check_and_send(send=send)
+
+    
+    def continuous_check(self, sleep_time:int = None, url:str = None, send:bool = None) -&gt; None:
+        &#34;&#34;&#34;
+        Continuously performs checks at regular intervals.
+
+        Args:
+            sleep_time (int, optional): The time to sleep between each check in seconds. If not provided, the default sleep time will be used.
+            url (str, optional): The URL to send the check request to. If not provided, the default check URL will be used.
+            send (bool, optional): Whether to send the check request. If not provided, the default send option will be used.
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+        if url is None:
+            url = self.url
+            if url is None:
+                send = False
+            elif send is None:
+                send = self.send_check
+        else:
+            send = True
+        if sleep_time is None:
+            sleep_time = self.sleep_time
+        # Send the starting check
+        if send:
+            self.send_start()
+        # Initialize the halt flag
+        self.halt = False
+        # Forever
+        while not self.halt:
+            # Check
+            self.timed_check(sleep_time=sleep_time,url=url, send=send)
+        # Reset the stop flag
+        self.halt = False
+        # Send the ending check
+        if send:
+            # Send the done message
+            self.send_done()
+    
+    def run(self) -&gt; None:
+        &#34;&#34;&#34;
+        Run the checker
+        &#34;&#34;&#34;
+        self.continuous_check()
+        return</code></pre>
+</details>
+<div class="desc"><p>Abstract class for checkers</p>
+<p>Constructor</p>
+<p>Initializes a new instance of the Checker class.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of the checker. Defaults to "Checker".</dd>
+<dt><strong><code>sleep_time</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Minutes to wait before checking again. Defaults to 10.</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>URL to send the check. Defaults to None.</dd>
+<dt><strong><code>send_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag indicating if the check should be sent. Defaults to False</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+<li>threading.Thread</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="EUgolino.classes.checkers.checker.Checker.e"><code class="name">var <span class="ident">e</span> : threading.Event</code></dt>
+<dd>
+<div class="desc"><p>Event for waiting</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.halt"><code class="name">var <span class="ident">halt</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Flag indicating if the checker should stop</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.send_check"><code class="name">var <span class="ident">send_check</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Flag indicating if the check should be sent</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.sleep_time"><code class="name">var <span class="ident">sleep_time</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Minutes to wait before checking again</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.url"><code class="name">var <span class="ident">url</span> : str</code></dt>
+<dd>
+<div class="desc"><p>URL to send the check</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="EUgolino.classes.checkers.checker.Checker.check"><code class="name flex">
+<span>def <span class="ident">check</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def check(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Check the service
+    
+    Returns:
+        bool: True if the service is up, False otherwise
+    &#34;&#34;&#34;
+    return True</code></pre>
+</details>
+<div class="desc"><p>Check the service</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the service is up, False otherwise</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.check_and_send"><code class="name flex">
+<span>def <span class="ident">check_and_send</span></span>(<span>self, send: bool = None) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_and_send(self, send:bool = None) -&gt; bool:
+    &#34;&#34;&#34;
+    Send the check.
+    
+    Returns:
+        bool: True if the check was sent, False otherwise
+    &#34;&#34;&#34;
+    if send is None:
+        send = self.send_check
+    # Check
+    b = self.check()
+    # Send the check
+    return self.send(b) if send else b</code></pre>
+</details>
+<div class="desc"><p>Send the check.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the check was sent, False otherwise</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.continuous_check"><code class="name flex">
+<span>def <span class="ident">continuous_check</span></span>(<span>self, sleep_time: int = None, url: str = None, send: bool = None) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def continuous_check(self, sleep_time:int = None, url:str = None, send:bool = None) -&gt; None:
+    &#34;&#34;&#34;
+    Continuously performs checks at regular intervals.
+
+    Args:
+        sleep_time (int, optional): The time to sleep between each check in seconds. If not provided, the default sleep time will be used.
+        url (str, optional): The URL to send the check request to. If not provided, the default check URL will be used.
+        send (bool, optional): Whether to send the check request. If not provided, the default send option will be used.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    if url is None:
+        url = self.url
+        if url is None:
+            send = False
+        elif send is None:
+            send = self.send_check
+    else:
+        send = True
+    if sleep_time is None:
+        sleep_time = self.sleep_time
+    # Send the starting check
+    if send:
+        self.send_start()
+    # Initialize the halt flag
+    self.halt = False
+    # Forever
+    while not self.halt:
+        # Check
+        self.timed_check(sleep_time=sleep_time,url=url, send=send)
+    # Reset the stop flag
+    self.halt = False
+    # Send the ending check
+    if send:
+        # Send the done message
+        self.send_done()</code></pre>
+</details>
+<div class="desc"><p>Continuously performs checks at regular intervals.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sleep_time</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>The time to sleep between each check in seconds. If not provided, the default sleep time will be used.</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>The URL to send the check request to. If not provided, the default check URL will be used.</dd>
+<dt><strong><code>send</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to send the check request. If not provided, the default send option will be used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.get_progresses"><code class="name flex">
+<span>def <span class="ident">get_progresses</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def get_progresses(self) -&gt; str:
+    &#34;&#34;&#34;
+    Get the progresses of the service
+    
+    Returns:
+        dict: Dictionary containing the progresses of the service
+    &#34;&#34;&#34;
+    return &#34;&#34;</code></pre>
+</details>
+<div class="desc"><p>Get the progresses of the service</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Dictionary containing the progresses of the service</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self) -&gt; None:
+    &#34;&#34;&#34;
+    Run the checker
+    &#34;&#34;&#34;
+    self.continuous_check()
+    return</code></pre>
+</details>
+<div class="desc"><p>Run the checker</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.send"><code class="name flex">
+<span>def <span class="ident">send</span></span>(<span>self, success: bool = True, data: str = '', url: str = '') ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send(self, success:bool = True, data:str = &#34;&#34;, url:str=&#34;&#34;) -&gt; bool:
+    &#34;&#34;&#34;
+    Send the check to the specified URL.
+
+    Args:
+        success (bool, optional): Flag indicating whether the check was successful. Defaults to None.
+        data (str, optional): Data to send with the check. Defaults to &#34;&#34;.
+        url (str, optional): URL to send the check to. Defaults to &#34;&#34;.
+
+    Returns:
+        bool: True if the check was sent, False otherwise.
+    &#34;&#34;&#34;
+    if self.url is None and url == &#34;&#34;:
+        return
+    if url == &#34;&#34;:
+        url = self.url
+    # Make url
+    url = url if success else url + &#34;/fail&#34;
+    # If data is not set
+    if data == &#34;&#34;:
+        # Make data
+        data = &#34;Name:\t&#34; + self.name + &#34;\n\n&#34; + self.get_progresses()
+    # Send the check with current length
+    r = requests.post(url=url, data=data)
+    # Return the result
+    return r.ok</code></pre>
+</details>
+<div class="desc"><p>Send the check to the specified URL.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>success</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag indicating whether the check was successful. Defaults to None.</dd>
+<dt><strong><code>data</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Data to send with the check. Defaults to "".</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>URL to send the check to. Defaults to "".</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the check was sent, False otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.send_done"><code class="name flex">
+<span>def <span class="ident">send_done</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_done(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Send the ending check.
+    
+    Returns:
+        bool: True if the check was sent, False otherwise
+    &#34;&#34;&#34;
+    # Make data
+    data = str(&#34;Name:\t&#34; + self.name + &#34;\n\nDONE\n\n&#34; + self.get_progresses())
+    # Send the message
+    r = requests.post(url=self.url, data=data, timeout=10)
+    # Return the result
+    return r.ok</code></pre>
+</details>
+<div class="desc"><p>Send the ending check.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the check was sent, False otherwise</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.send_start"><code class="name flex">
+<span>def <span class="ident">send_start</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_start(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Send the starting check.
+    
+    Returns:
+        bool: True if the check was sent, False otherwise
+    &#34;&#34;&#34;
+    return requests.post(url=self.url+&#34;/start&#34;, data=str(&#34;Name:\t&#34; + self.name)).ok</code></pre>
+</details>
+<div class="desc"><p>Send the starting check.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the check was sent, False otherwise</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.stop"><code class="name flex">
+<span>def <span class="ident">stop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stop(self) -&gt; None:
+    &#34;&#34;&#34;
+    Stop the checker
+    &#34;&#34;&#34;
+    self.halt = True
+    self.e.set()</code></pre>
+</details>
+<div class="desc"><p>Stop the checker</p></div>
+</dd>
+<dt id="EUgolino.classes.checkers.checker.Checker.timed_check"><code class="name flex">
+<span>def <span class="ident">timed_check</span></span>(<span>self, sleep_time: int = None, url: str = None, send: bool = None) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def timed_check(self, sleep_time:int = None, url:str = None, send:bool = None) -&gt; bool:
+    &#34;&#34;&#34;
+    Make a check after waiting a sleep time.
+
+    Args:
+        sleep_time (int, optional): The time to sleep before checking. If not provided, the default sleep time from the class instance will be used.
+        url (str, optional): The URL to check. If not provided, the default URL from the class instance will be used.
+        send (bool, optional): Indicates whether to send the check. If not provided, the default send value from the class instance will be used.
+
+    Returns:
+        bool: Result of the check.
+    &#34;&#34;&#34;
+    if url is None:
+        url = self.url
+        if url is None:
+            send = False
+        elif send is None:
+            send = self.send_check
+    else:
+        send = True
+    if sleep_time is None:
+        sleep_time = self.sleep_time
+    # Set the event
+    self.e.clear()
+    # Sleep for the specified time
+    try:
+        self.e.wait(sleep_time)
+    except:
+        pass
+    # Check and send
+    return self.check_and_send(send=send)</code></pre>
+</details>
+<div class="desc"><p>Make a check after waiting a sleep time.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sleep_time</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>The time to sleep before checking. If not provided, the default sleep time from the class instance will be used.</dd>
+<dt><strong><code>url</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>The URL to check. If not provided, the default URL from the class instance will be used.</dd>
+<dt><strong><code>send</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Indicates whether to send the check. If not provided, the default send value from the class instance will be used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Result of the check.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="EUgolino.classes.checkers" href="index.html">EUgolino.classes.checkers</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="EUgolino.classes.checkers.checker.Checker" href="#EUgolino.classes.checkers.checker.Checker">Checker</a></code></h4>
+<ul class="two-column">
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.check" href="#EUgolino.classes.checkers.checker.Checker.check">check</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.check_and_send" href="#EUgolino.classes.checkers.checker.Checker.check_and_send">check_and_send</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.continuous_check" href="#EUgolino.classes.checkers.checker.Checker.continuous_check">continuous_check</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.e" href="#EUgolino.classes.checkers.checker.Checker.e">e</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.get_progresses" href="#EUgolino.classes.checkers.checker.Checker.get_progresses">get_progresses</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.halt" href="#EUgolino.classes.checkers.checker.Checker.halt">halt</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.run" href="#EUgolino.classes.checkers.checker.Checker.run">run</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.send" href="#EUgolino.classes.checkers.checker.Checker.send">send</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.send_check" href="#EUgolino.classes.checkers.checker.Checker.send_check">send_check</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.send_done" href="#EUgolino.classes.checkers.checker.Checker.send_done">send_done</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.send_start" href="#EUgolino.classes.checkers.checker.Checker.send_start">send_start</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.sleep_time" href="#EUgolino.classes.checkers.checker.Checker.sleep_time">sleep_time</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.stop" href="#EUgolino.classes.checkers.checker.Checker.stop">stop</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.timed_check" href="#EUgolino.classes.checkers.checker.Checker.timed_check">timed_check</a></code></li>
+<li><code><a title="EUgolino.classes.checkers.checker.Checker.url" href="#EUgolino.classes.checkers.checker.Checker.url">url</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

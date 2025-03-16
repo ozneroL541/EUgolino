@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>EUgolino.classes.log_manager API documentation</title>
+<meta name="description" content="LogManager
+file name: log_manager.py
+author: Lorenzo Radice
+license: European Union Public Licence v. 1.2.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>EUgolino.classes.log_manager</code></h1>
+</header>
+<section id="section-intro">
+<p>LogManager<br>
+file name: log_manager.py<br>
+author: Lorenzo Radice<br>
+license: European Union Public Licence v. 1.2.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="EUgolino.classes.log_manager.LogManager"><code class="flex name class">
+<span>class <span class="ident">LogManager</span></span>
+<span>(</span><span>out_file: str = '',<br>out: _io.TextIOWrapper = sys.stdout,<br>err_file: str = '',<br>err: _io.TextIOWrapper = sys.stderr,<br>duplicate_out: bool = False,<br>duplicate: bool = False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LogManager:
+    &#34;&#34;&#34;
+    LogManager class.
+    &#34;&#34;&#34;
+    OUT:TextIO = sys.stdout
+    &#34;&#34;&#34;Standard output&#34;&#34;&#34;
+    ERR:TextIO = sys.stderr
+    &#34;&#34;&#34;Standard error&#34;&#34;&#34;
+    out:TextIOWrapper = sys.stdout
+    &#34;&#34;&#34;Output log&#34;&#34;&#34;
+    out_file:str = None
+    &#34;&#34;&#34;Path to the output log file&#34;&#34;&#34;
+    err:TextIOWrapper = sys.stderr
+    &#34;&#34;&#34;Error log&#34;&#34;&#34;
+    err_file:str = None
+    &#34;&#34;&#34;Path to the error log file&#34;&#34;&#34;
+    duplicate:bool = False
+    &#34;&#34;&#34;Flag to duplicate the logs&#34;&#34;&#34;
+    duplicate_out:bool = False
+    &#34;&#34;&#34;Flag to duplicate the output logs&#34;&#34;&#34;
+
+    def __init__(self, out_file:str = &#34;&#34;, out:TextIOWrapper = sys.stdout, err_file:str = &#34;&#34;, err:TextIOWrapper = sys.stderr, duplicate_out:bool = False, duplicate:bool = False) -&gt; None:
+        &#34;&#34;&#34;
+        Initializes a LogManager object.
+
+        Args:
+            out_file (str): Path to the output log file (optional).
+            err_file (str): Path to the error log file (optional).
+            out (TextIOWrapper): Output log stream (default: sys.stdout).
+            err (TextIOWrapper): Error log stream (default: sys.stderr).
+            duplicate (bool): Flag to duplicate the logs (default: False).
+        &#34;&#34;&#34;
+        if out_file != &#34;&#34;:
+            try:
+                out = open(out_file, &#34;a&#34;)
+                self.out_file = out_file
+                out.close()
+            except:
+                self.out_file = None
+        self.out = out
+        if err_file != &#34;&#34;:
+            try:
+                err = open(err_file, &#34;a&#34;)
+                self.err_file = err_file
+                err.close()
+            except:
+                self.err_file = None
+        self.err = err
+        self.duplicate = duplicate
+        if self.duplicate:
+            self.duplicate_out = True
+        else:
+            self.duplicate_out = duplicate_out
+    
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;
+        Returns a string representation of the LogManager object.
+
+        Returns:
+            str: String representation of the object.
+        &#34;&#34;&#34;
+        return f&#34;out: {self.out}, err: {self.err}, duplicate: {self.duplicate}&#34;
+
+    def print_out(self, message:str, duplicate:bool = None, end:str = &#39;\n&#39;) -&gt; None:
+        &#34;&#34;&#34;
+        Prints a message to the output log.
+
+        Args:
+            message (str): The message to be printed.
+            duplicate (bool): Flag to duplicate the logs (optional).
+        &#34;&#34;&#34;
+        if duplicate is None:
+            duplicate = self.duplicate_out
+        # Check if the output log file is set
+        if self.is_outfile_set():
+            # Open the output log file
+            self.out = open(self.out_file, &#34;a&#34;)
+            # Print the message to the output log file
+            print(message, file=self.out, end=end)
+            # Close the output log file
+            self.out.close()
+        else:
+            # Print the message to the output log
+            print(message, file=self.out, end=end)
+        # Check if the logs should be duplicated
+        if duplicate and self.out != self.OUT:
+            # Print the message to the standard output
+            print(message, file=self.OUT, end=end)
+    
+    def print_err(self, message:str, duplicate:bool = None, end:str = &#39;\n&#39;) -&gt; None:
+        &#34;&#34;&#34;
+        Prints a message to the error log.
+
+        Args:
+            message (str): The message to be printed.
+            duplicate (bool): Flag to duplicate the logs (optional).
+        &#34;&#34;&#34;
+        if duplicate is None:
+            duplicate = self.duplicate
+        # Check if the error log file is set
+        if self.is_errfile_set():
+            # Open the error log file
+            self.err = open(self.err_file, &#34;a&#34;)
+            # Print the message to the error log file
+            print(message, file=self.err, end=end)
+            # Close the error log file
+            self.err.close()
+        else:
+            # Print the message to the error log
+            print(message, file=self.err, end=end)
+        # Check if the logs should be duplicated
+        if duplicate and self.err != self.ERR:
+            # Print the message to the standard error
+            print(message, file=self.ERR, end=end)
+
+    def is_outfile_set(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Checks if the output log file is set.
+
+        Returns:
+            bool: True if the output log file is set, False otherwise.
+        &#34;&#34;&#34;
+        return self.out_file is not None
+    
+    def is_errfile_set(self) -&gt; bool:
+        &#34;&#34;&#34;
+        Checks if the error log file is set.
+
+        Returns:
+            bool: True if the error log file is set, False otherwise.
+        &#34;&#34;&#34;
+        return self.err_file is not None</code></pre>
+</details>
+<div class="desc"><p>LogManager class.</p>
+<p>Initializes a LogManager object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>out_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to the output log file (optional).</dd>
+<dt><strong><code>err_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to the error log file (optional).</dd>
+<dt><strong><code>out</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
+<dd>Output log stream (default: sys.stdout).</dd>
+<dt><strong><code>err</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
+<dd>Error log stream (default: sys.stderr).</dd>
+<dt><strong><code>duplicate</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to duplicate the logs (default: False).</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="EUgolino.classes.log_manager.LogManager.ERR"><code class="name">var <span class="ident">ERR</span> : <class 'TextIO'></code></dt>
+<dd>
+<div class="desc"><p>Standard error</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.OUT"><code class="name">var <span class="ident">OUT</span> : <class 'TextIO'></code></dt>
+<dd>
+<div class="desc"><p>Standard output</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.duplicate"><code class="name">var <span class="ident">duplicate</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Flag to duplicate the logs</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.duplicate_out"><code class="name">var <span class="ident">duplicate_out</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Flag to duplicate the output logs</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.err"><code class="name">var <span class="ident">err</span> : _io.TextIOWrapper</code></dt>
+<dd>
+<div class="desc"><p>Error log</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.err_file"><code class="name">var <span class="ident">err_file</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Path to the error log file</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.out"><code class="name">var <span class="ident">out</span> : _io.TextIOWrapper</code></dt>
+<dd>
+<div class="desc"><p>Output log</p></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.out_file"><code class="name">var <span class="ident">out_file</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Path to the output log file</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="EUgolino.classes.log_manager.LogManager.is_errfile_set"><code class="name flex">
+<span>def <span class="ident">is_errfile_set</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_errfile_set(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the error log file is set.
+
+    Returns:
+        bool: True if the error log file is set, False otherwise.
+    &#34;&#34;&#34;
+    return self.err_file is not None</code></pre>
+</details>
+<div class="desc"><p>Checks if the error log file is set.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the error log file is set, False otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.is_outfile_set"><code class="name flex">
+<span>def <span class="ident">is_outfile_set</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_outfile_set(self) -&gt; bool:
+    &#34;&#34;&#34;
+    Checks if the output log file is set.
+
+    Returns:
+        bool: True if the output log file is set, False otherwise.
+    &#34;&#34;&#34;
+    return self.out_file is not None</code></pre>
+</details>
+<div class="desc"><p>Checks if the output log file is set.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if the output log file is set, False otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.print_err"><code class="name flex">
+<span>def <span class="ident">print_err</span></span>(<span>self, message: str, duplicate: bool = None, end: str = '\n') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_err(self, message:str, duplicate:bool = None, end:str = &#39;\n&#39;) -&gt; None:
+    &#34;&#34;&#34;
+    Prints a message to the error log.
+
+    Args:
+        message (str): The message to be printed.
+        duplicate (bool): Flag to duplicate the logs (optional).
+    &#34;&#34;&#34;
+    if duplicate is None:
+        duplicate = self.duplicate
+    # Check if the error log file is set
+    if self.is_errfile_set():
+        # Open the error log file
+        self.err = open(self.err_file, &#34;a&#34;)
+        # Print the message to the error log file
+        print(message, file=self.err, end=end)
+        # Close the error log file
+        self.err.close()
+    else:
+        # Print the message to the error log
+        print(message, file=self.err, end=end)
+    # Check if the logs should be duplicated
+    if duplicate and self.err != self.ERR:
+        # Print the message to the standard error
+        print(message, file=self.ERR, end=end)</code></pre>
+</details>
+<div class="desc"><p>Prints a message to the error log.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong> :&ensp;<code>str</code></dt>
+<dd>The message to be printed.</dd>
+<dt><strong><code>duplicate</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to duplicate the logs (optional).</dd>
+</dl></div>
+</dd>
+<dt id="EUgolino.classes.log_manager.LogManager.print_out"><code class="name flex">
+<span>def <span class="ident">print_out</span></span>(<span>self, message: str, duplicate: bool = None, end: str = '\n') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_out(self, message:str, duplicate:bool = None, end:str = &#39;\n&#39;) -&gt; None:
+    &#34;&#34;&#34;
+    Prints a message to the output log.
+
+    Args:
+        message (str): The message to be printed.
+        duplicate (bool): Flag to duplicate the logs (optional).
+    &#34;&#34;&#34;
+    if duplicate is None:
+        duplicate = self.duplicate_out
+    # Check if the output log file is set
+    if self.is_outfile_set():
+        # Open the output log file
+        self.out = open(self.out_file, &#34;a&#34;)
+        # Print the message to the output log file
+        print(message, file=self.out, end=end)
+        # Close the output log file
+        self.out.close()
+    else:
+        # Print the message to the output log
+        print(message, file=self.out, end=end)
+    # Check if the logs should be duplicated
+    if duplicate and self.out != self.OUT:
+        # Print the message to the standard output
+        print(message, file=self.OUT, end=end)</code></pre>
+</details>
+<div class="desc"><p>Prints a message to the output log.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong> :&ensp;<code>str</code></dt>
+<dd>The message to be printed.</dd>
+<dt><strong><code>duplicate</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Flag to duplicate the logs (optional).</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="EUgolino.classes" href="index.html">EUgolino.classes</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="EUgolino.classes.log_manager.LogManager" href="#EUgolino.classes.log_manager.LogManager">LogManager</a></code></h4>
+<ul class="two-column">
+<li><code><a title="EUgolino.classes.log_manager.LogManager.ERR" href="#EUgolino.classes.log_manager.LogManager.ERR">ERR</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.OUT" href="#EUgolino.classes.log_manager.LogManager.OUT">OUT</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.duplicate" href="#EUgolino.classes.log_manager.LogManager.duplicate">duplicate</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.duplicate_out" href="#EUgolino.classes.log_manager.LogManager.duplicate_out">duplicate_out</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.err" href="#EUgolino.classes.log_manager.LogManager.err">err</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.err_file" href="#EUgolino.classes.log_manager.LogManager.err_file">err_file</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.is_errfile_set" href="#EUgolino.classes.log_manager.LogManager.is_errfile_set">is_errfile_set</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.is_outfile_set" href="#EUgolino.classes.log_manager.LogManager.is_outfile_set">is_outfile_set</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.out" href="#EUgolino.classes.log_manager.LogManager.out">out</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.out_file" href="#EUgolino.classes.log_manager.LogManager.out_file">out_file</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.print_err" href="#EUgolino.classes.log_manager.LogManager.print_err">print_err</a></code></li>
+<li><code><a title="EUgolino.classes.log_manager.LogManager.print_out" href="#EUgolino.classes.log_manager.LogManager.print_out">print_out</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>
