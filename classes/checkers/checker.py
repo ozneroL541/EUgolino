@@ -17,7 +17,7 @@ class Checker(ABC, threading.Thread):
     """
 
     sleep_time:int = 10
-    """Time to wait before checking again"""
+    """Minutes to wait before checking again"""
     url:str = None
     """URL to send the check"""
     send_check:bool = False
@@ -35,7 +35,7 @@ class Checker(ABC, threading.Thread):
 
         Args:
             name (str, optional): Name of the checker. Defaults to "Checker".
-            sleep_time (int, optional): Time to wait before checking again. Defaults to 10.
+            sleep_time (int, optional): Minutes to wait before checking again. Defaults to 10.
             url (str, optional): URL to send the check. Defaults to None.
             send_check (bool, optional): Flag indicating if the check should be sent. Defaults to False
         """
