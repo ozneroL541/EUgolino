@@ -111,7 +111,7 @@ class Checker(ABC, threading.Thread):
 
     def send_done(self) -> bool:
         """
-        Send the done check.
+        Send the ending check.
         
         Returns:
             bool: True if the check was sent, False otherwise
