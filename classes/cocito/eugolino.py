@@ -1,9 +1,9 @@
 #!/bin/python3
 '''
-    EUgolino
-    file name: eugolino.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
+    EUgolino  
+    file name: eugolino.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
 '''
 
 import os

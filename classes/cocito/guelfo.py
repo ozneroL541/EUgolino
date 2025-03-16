@@ -1,9 +1,9 @@
 #!/bin/python3
 '''
-    GEUlfo
-    file name: guelfo.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
+    GEUlfo  
+    file name: guelfo.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
 '''
 
 import requests

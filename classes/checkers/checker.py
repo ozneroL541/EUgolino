@@ -1,9 +1,9 @@
 #!/bin/python3
 '''
-    EUgolino Abstract Checker
-    file name: checker.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
+    EUgolino Abstract Checker  
+    file name: checker.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
 '''
 
 from abc import ABC, abstractmethod

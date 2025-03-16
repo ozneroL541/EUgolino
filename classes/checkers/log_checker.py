@@ -1,9 +1,9 @@
 #!/bin/python3
 '''
-    EUgolino Log Checker
-    file name: log_checker.py
-    author: Lorenzo Radice
-    license: European Union Public Licence v. 1.2.
+    EUgolino Log Checker  
+    file name: log_checker.py  
+    author: Lorenzo Radice  
+    license: European Union Public Licence v. 1.2.  
 '''
 
 from classes.checkers.checker import Checker
